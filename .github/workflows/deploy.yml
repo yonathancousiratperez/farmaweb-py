@@ -31,12 +31,12 @@ jobs:
           cache: npm
           cache-dependency-path: web/package-lock.json
 
+      # Requiere que Pages ya este habilitado en Settings > Pages con
+      # Source = "GitHub Actions". No se puede automatizar: el GITHUB_TOKEN
+      # del workflow no tiene permiso para crear el sitio de Pages
+      # ("Resource not accessible by integration"), hace falta un admin.
       - id: pages
         uses: actions/configure-pages@v5
-        with:
-          # Habilita Pages en el repo si todavia no lo esta, en vez de fallar
-          # con "Get Pages site failed". Evita un paso manual en Settings.
-          enablement: true
 
       - run: npm ci
         working-directory: web
