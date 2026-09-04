@@ -1,0 +1,66 @@
+---
+import Legal from "../layouts/Legal.astro";
+import { CONTACTO } from "../config/contacto";
+---
+
+<Legal
+  titulo="Para farmacias y bancos"
+  resumen="Si sos una farmacia o un banco y queres corregir un dato, pedir la baja o coordinar como leemos tu sitio, escribinos y lo resolvemos rapido."
+>
+  <h2>Corregir un dato</h2>
+  <p>
+    Si un precio, una presentacion o una promocion tuya figura mal, escribinos a
+    <strong>{CONTACTO.email}</strong> indicando la URL del producto o de la promocion en
+    tu sitio. Corregimos o forzamos una relectura, y te confirmamos cuando este hecho.
+  </p>
+
+  <h2>Baja voluntaria</h2>
+  <p>
+    Si preferis que tu catalogo no aparezca, tambien alcanza con escribirnos.
+    <strong>No hace falta justificar el motivo.</strong> Al darte de baja:
+  </p>
+  <ul>
+    <li>Dejamos de leer tu sitio.</li>
+    <li>Tus productos desaparecen de las busquedas y del comparador.</li>
+    <li>Confirmamos por escrito cuando este aplicado.</li>
+  </ul>
+  <p>
+    La baja esta implementada como una <strong>marca en la base de datos</strong>, no
+    como un borrado manual de codigo: se aplica en la siguiente publicacion del sitio y
+    no depende de que alguien se acuerde de sacar algo a mano.
+  </p>
+
+  <h2>Como leemos tu sitio</h2>
+  <ul>
+    <li>
+      Nuestro agente de usuario es <code>FarmawebPyBot</code> e incluye una URL de
+      contacto, para que puedas identificarnos en tus logs.
+    </li>
+    <li>
+      Respetamos tu <code>robots.txt</code>, incluidas las rutas prohibidas y el
+      <code>Crawl-delay</code> cuando lo declaras.
+    </li>
+    <li>
+      Limitamos la frecuencia de pedidos para no afectar el rendimiento de tu sitio. Si
+      aun asi te molesta, decinos que tasa preferis y la ajustamos.
+    </li>
+    <li>Solo leemos paginas publicas de catalogo. No tocamos carrito, cuenta ni checkout.</li>
+  </ul>
+
+  <h2>Bancos: promociones</h2>
+  <p>
+    Publicamos un resumen de la promocion y enlazamos siempre a tus bases y condiciones
+    oficiales, que son las que prevalecen. <strong>Ninguna promocion se publica sin
+    revision humana previa</strong>, justamente para no equivocarnos con un tope o una
+    vigencia.
+  </p>
+  <p>
+    Si detectas un error en como resumimos una promocion tuya, avisanos y la corregimos
+    o la bajamos mientras tanto.
+  </p>
+
+  <h2>Contacto</h2>
+  <p>
+    <strong>{CONTACTO.email}</strong> · {CONTACTO.telefono}
+  </p>
+</Legal>

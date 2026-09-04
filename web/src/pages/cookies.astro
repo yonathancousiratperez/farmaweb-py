@@ -1,0 +1,54 @@
+---
+import Legal from "../layouts/Legal.astro";
+import PreferenciaCookies from "../components/PreferenciaCookies.tsx";
+---
+
+<Legal
+  titulo="Politica de cookies"
+  resumen="No usamos cookies de publicidad ni de seguimiento entre sitios. Hoy el sitio funciona sin analitica hasta que vos la habilites."
+>
+  <h2>Que es una cookie</h2>
+  <p>
+    Una cookie es un archivo chico que un sitio guarda en tu navegador. Aca tambien
+    usamos <strong>almacenamiento local</strong> (localStorage), que cumple una funcion
+    parecida: guardar algo en tu equipo entre visitas. Todo lo que sigue aplica a las
+    dos tecnologias.
+  </p>
+
+  <h2>Que guardamos</h2>
+  <h3>Necesarias (no requieren consentimiento)</h3>
+  <ul>
+    <li>
+      <strong>farmaweb:consentimiento</strong> — guarda si aceptaste o rechazaste la
+      analitica. Sin esto tendriamos que preguntarte en cada visita. Permanente hasta
+      que la borres.
+    </li>
+    <li>
+      <strong>Preferencias de busqueda</strong> — banco, tarjeta y filtros que elijas.
+      Quedan en tu navegador y <strong>nunca viajan a nuestros servidores</strong>.
+    </li>
+  </ul>
+
+  <h3>Analiticas (solo con tu permiso)</h3>
+  <p>
+    Nos permitirian medir cuanta gente entra y que se busca, siempre de forma agregada.
+    <strong>No se cargan hasta que las aceptes</strong>, y hoy no hay ninguna
+    herramienta de analitica instalada en el sitio.
+  </p>
+
+  <h3>Publicidad y seguimiento</h3>
+  <p><strong>No usamos ninguna.</strong> Ni propia ni de terceros.</p>
+
+  <h2>Como cambiar tu eleccion</h2>
+  <p>
+    Aca mismo, cuando quieras. Retirar el permiso es tan simple como darlo, como exige
+    el Art. 6 de la Ley 7593/2025.
+  </p>
+
+  <PreferenciaCookies client:load />
+
+  <p>
+    Tambien podes borrar todo desde la configuracion de tu navegador ("borrar datos de
+    sitios"). Si lo haces, volveremos a preguntarte en tu proxima visita.
+  </p>
+</Legal>

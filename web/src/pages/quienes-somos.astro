@@ -1,0 +1,66 @@
+---
+import Legal from "../layouts/Legal.astro";
+---
+
+<Legal
+  titulo="Quienes somos"
+  resumen="Farmaweb.py nacio de un problema concreto: para saber donde conviene comprar un remedio en Paraguay hay que abrir cinco pestanas y leer el PDF de bases y condiciones de cada banco."
+>
+  <h2>Que hacemos</h2>
+  <p>
+    Reunimos el catalogo publico de las principales farmacias del Paraguay con tienda
+    online, lo organizamos por categorias y le cruzamos las promociones bancarias
+    vigentes. La idea es responder una sola pregunta bien:
+    <strong>donde me conviene comprar esto hoy y con que tarjeta</strong>.
+  </p>
+
+  <h2>De donde salen los datos</h2>
+  <p>
+    De los <strong>sitios web publicos de cada farmacia</strong>, leidos de forma
+    automatica y periodica. No tenemos acuerdos ni integraciones privadas con ellas, y
+    no accedemos a ningun dato que no este publicado abiertamente.
+  </p>
+  <p>Nos autoimponemos tres reglas al hacerlo:</p>
+  <ul>
+    <li>
+      Nos identificamos con un agente de usuario propio que incluye una URL de
+      contacto, para que cualquier farmacia sepa quien la esta leyendo y como
+      escribirnos.
+    </li>
+    <li>
+      Limitamos la frecuencia de lectura por sitio y respetamos lo que indica cada
+      <code>robots.txt</code>, incluido el retardo entre pedidos cuando lo declaran.
+    </li>
+    <li>
+      <strong>Enlazamos siempre a la ficha original.</strong> El sitio manda trafico a
+      la farmacia, no lo retiene.
+    </li>
+  </ul>
+
+  <h2>Cada cuanto se actualiza</h2>
+  <p>
+    Los precios se releen a diario, porque en la practica cambian a diario. Cada
+    resultado muestra la fecha y hora exacta de su captura: si algo se ve viejo, se ve
+    que es viejo.
+  </p>
+
+  <h2>Por que los medicamentos bajo receta no muestran precio</h2>
+  <p>
+    Porque la <strong>Ley 1119/97, Art. 25 inc. 10</strong> prohibe la publicidad de
+    medicamentos de venta bajo receta, salvo los avisos de existencia en plaza. Las
+    farmacias pueden publicarlos porque son establecimientos habilitados por DINAVISA;
+    nosotros somos un agregador tercero, sin esa cobertura.
+  </p>
+  <p>
+    Asi que de esos productos mostramos el nombre, la presentacion, en que farmacias
+    figuran y el enlace, pero <strong>ningun precio, porcentaje ni promocion</strong>.
+    Preferimos mostrar de menos antes que publicar algo que la ley no nos permite.
+  </p>
+
+  <h2>Como nos financiamos</h2>
+  <p>
+    Hoy, con nada. No cobramos comision por las compras, no vendemos publicidad y no
+    tenemos vinculo comercial con ninguna farmacia ni con ningun banco. Si eso cambia
+    alguna vez, se va a decir aca antes que en ningun otro lado.
+  </p>
+</Legal>

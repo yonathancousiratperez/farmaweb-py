@@ -1,0 +1,29 @@
+# --------------------------------------------------------------- secretos
+.env
+.env.*
+!.env.example
+web/.env
+
+# ------------------------------------------------- notas privadas del vault
+# Esta carpeta es a la vez proyecto de Obsidian y repo publico. Todo lo que
+# sigue es material de trabajo personal (bitacora, memoria de sesiones, estado,
+# fuentes descargadas) y NO forma parte del producto. Fuera del repo publico:
+# ademas de ser ruido, arrastra rutas locales, decisiones internas y
+# identificadores de infraestructura.
+CLAUDE.md
+memory/
+errores/
+docs/
+estado-sesion.md
+bitacora-sesiones.md
+buscador-comparador-farmacias.md
+.claude/
+
+# ------------------------------------------------------------------ Python
+__pycache__/
+*.pyc
+
+# ------------------------------------------------------------------- Astro
+web/node_modules/
+web/dist/
+web/.astro/

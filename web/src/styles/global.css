@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  /* Verde farmacia, pero desaturado: el verde saturado de cruz de farmacia
+     compite con los badges de descuento, que son lo que el ojo tiene que
+     encontrar primero. */
+  --color-marca-50: #f0f7f4;
+  --color-marca-100: #d9ece4;
+  --color-marca-500: #2f8f6b;
+  --color-marca-600: #247356;
+  --color-marca-700: #1c5943;
+  --color-marca-900: #12352a;
+
+  --color-oferta: #d94f2b;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fbfbfa;
+  color: #1a1a1a;
+}
+
+/* Dos lineas maximo en los titulos de producto: los nombres de farmacia son
+   largos ("ALTA MODA MICELAR ACQUA SHINE SHAMPOO 300ML ESP") y sin tope
+   descuadran toda la grilla. */
+.recorte-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

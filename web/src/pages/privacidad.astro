@@ -1,0 +1,122 @@
+---
+import Legal from "../layouts/Legal.astro";
+import { CONTACTO } from "../config/contacto";
+---
+
+<Legal
+  titulo="Politica de privacidad"
+  resumen="No pedimos tu nombre, no te hacemos crear una cuenta y no guardamos que buscaste asociado a vos. Tus preferencias de banco y tarjeta quedan en tu propio navegador."
+>
+  <p>
+    Esta politica se dicta conforme a la <strong>Ley 7593/2025 de Proteccion de
+    Datos Personales</strong> de la Republica del Paraguay. La autoridad de control
+    es la Agencia Nacional de Proteccion de Datos Personales, dependiente del MITIC.
+  </p>
+
+  <h2>1. Quien es responsable</h2>
+  <p>
+    El responsable del tratamiento es el titular de Farmaweb.py. Podes contactarlo en
+    <strong>{CONTACTO.email}</strong>.
+  </p>
+
+  <h2>2. Que datos tratamos</h2>
+  <p>
+    Farmaweb.py <strong>no requiere registro</strong>. No pedimos nombre, documento,
+    telefono, direccion ni datos de pago para usar el buscador. Tratamos unicamente:
+  </p>
+  <ul>
+    <li>
+      <strong>Analitica agregada de uso</strong>: cantidad de visitas, paginas vistas
+      y terminos de busqueda mas frecuentes, siempre en forma <strong>agregada y sin
+      asociar a una persona identificada o identificable</strong>.
+    </li>
+    <li>
+      <strong>Datos tecnicos</strong> que tu navegador envia de forma inevitable al
+      pedir una pagina (direccion IP, tipo de navegador), tratados por nuestros
+      proveedores de infraestructura para prestar el servicio y prevenir abusos.
+    </li>
+    <li>
+      <strong>Preferencias que vos elegis</strong> (banco, tipo de tarjeta, filtros).
+      Se guardan en el almacenamiento local de tu navegador y <strong>nunca se envian
+      a nuestros servidores</strong>.
+    </li>
+    <li>
+      <strong>Datos que nos escribas voluntariamente</strong> si nos contactas por
+      correo, para poder responderte.
+    </li>
+  </ul>
+
+  <h3>Sobre las busquedas de medicamentos</h3>
+  <p>
+    Buscar un medicamento puede revelar informacion sobre la salud de una persona, que
+    es un dato sensible. Por eso lo decimos de forma explicita:
+    <strong>no recolectamos datos de salud, ni vinculamos busquedas a una persona
+    identificada</strong>. La analitica que usamos es agregada y no permite reconstruir
+    el historial de busquedas de un usuario individual.
+  </p>
+
+  <h2>3. Con que base legal</h2>
+  <ul>
+    <li>
+      <strong>Interes legitimo</strong> (Art. 5): analitica agregada para entender que
+      se busca y mejorar el buscador, y medidas de seguridad del servicio.
+    </li>
+    <li>
+      <strong>Consentimiento previo, libre, informado e inequivoco</strong> (Art. 6):
+      cookies y tecnologias similares que no sean estrictamente necesarias. Podes
+      revocarlo en cualquier momento y con la misma facilidad con que lo diste, desde
+      <a href="/cookies">Politica de cookies</a>.
+    </li>
+    <li>
+      <strong>Ejecucion de tu solicitud</strong>: responder los mensajes que nos envies.
+    </li>
+  </ul>
+
+  <h2>4. Cuanto tiempo los conservamos</h2>
+  <ul>
+    <li>Analitica agregada: hasta 24 meses.</li>
+    <li>Correos de contacto: hasta 12 meses desde la ultima respuesta.</li>
+    <li>
+      Preferencias locales: hasta que las borres vos, limpiando los datos del sitio en
+      tu navegador. Nunca las tuvimos nosotros.
+    </li>
+  </ul>
+
+  <h2>5. Con quien se comparten</h2>
+  <p>
+    No vendemos ni cedemos datos personales. Usamos proveedores de infraestructura que
+    los tratan por cuenta nuestra y pueden alojarlos fuera del Paraguay:
+  </p>
+  <ul>
+    <li><strong>Supabase</strong> — base de datos del catalogo (region Sudamerica).</li>
+    <li><strong>GitHub Pages</strong> — alojamiento del sitio.</li>
+  </ul>
+  <p>
+    Tambien podemos divulgar informacion cuando lo exija una orden de autoridad
+    competente.
+  </p>
+
+  <h2>6. Tus derechos</h2>
+  <p>
+    Podes ejercer los derechos de <strong>acceso, rectificacion, cancelacion y
+    oposicion</strong>, ademas de la portabilidad y la revocacion del consentimiento
+    (Arts. 26 a 33). Escribinos a <strong>{CONTACTO.email}</strong> y te respondemos
+    en un plazo maximo de <strong>30 dias</strong>.
+  </p>
+  <p>
+    Si considerás que tu solicitud no fue atendida correctamente, podes reclamar ante
+    la Agencia Nacional de Proteccion de Datos Personales.
+  </p>
+
+  <h2>7. Menores</h2>
+  <p>
+    El sitio no esta dirigido a menores de edad y no recolecta conscientemente sus
+    datos.
+  </p>
+
+  <h2>8. Cambios</h2>
+  <p>
+    Si modificamos esta politica, actualizamos la fecha del encabezado. Los cambios
+    sustanciales se anuncian en la portada.
+  </p>
+</Legal>

@@ -1,0 +1,33 @@
+---
+import Base from "../layouts/Base.astro";
+import PromosBancarias from "../components/PromosBancarias.tsx";
+---
+
+<Base
+  titulo="Descuentos bancarios"
+  descripcion="Promociones y reintegros bancarios vigentes para compras en farmacias del Paraguay."
+>
+  <section class="max-w-3xl mx-auto px-4 py-12 sm:py-16">
+    <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">Descuentos bancarios</h1>
+    <p class="mt-3 text-neutral-600 leading-relaxed">
+      Promociones y reintegros vigentes para compras en farmacias, con su vigencia,
+      sus topes, las tarjetas que aplican y el enlace a las bases y condiciones
+      oficiales de cada banco. Las que vencen desaparecen solas de esta pagina.
+    </p>
+
+    <div class="mt-8">
+      <PromosBancarias client:load />
+    </div>
+
+    <p class="mt-8 text-sm text-neutral-500 leading-relaxed">
+      Lo que publicamos es un resumen informativo:
+      <strong>prevalecen siempre las bases y condiciones del banco emisor</strong>,
+      enlazadas en cada promocion. Estan sujetas a topes, nivel de cliente, tarjetas
+      especificas y dias. Farmaweb.py no tiene vinculo comercial con ningun banco ni
+      percibe comision por mencionarlas. Ver
+      <a href="/aviso-legal" class="text-marca-700 underline underline-offset-2"
+        >Aviso legal</a
+      >.
+    </p>
+  </section>
+</Base>

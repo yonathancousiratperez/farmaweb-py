@@ -1,0 +1,102 @@
+---
+import Legal from "../layouts/Legal.astro";
+import { SITIO } from "../config/contacto";
+---
+
+<Legal
+  titulo="Aviso legal"
+  resumen={`${SITIO.nombre} es un buscador de precios. No es una farmacia, no vende medicamentos y no sustituye la consulta con un profesional de la salud.`}
+>
+  <h2>1. Descargo sanitario</h2>
+  <p>
+    Farmaweb.py <strong>no es una farmacia ni un establecimiento habilitado</strong> por la
+    Direccion Nacional de Vigilancia Sanitaria (DINAVISA). No vende, dispensa,
+    distribuye ni intermedia en la venta de medicamentos ni de ningun otro producto
+    para la salud. Toda compra se realiza directamente en el sitio de la farmacia
+    correspondiente, bajo sus propios terminos.
+  </p>
+  <p>
+    El sitio <strong>no brinda asesoramiento medico ni farmaceutico</strong> y no
+    reemplaza la consulta con un profesional de la salud. La informacion publicada
+    tiene fines de comparacion de precios, no de orientacion terapeutica.
+  </p>
+  <p>
+    Los medicamentos de venta bajo receta requieren prescripcion medica. En
+    cumplimiento de la <strong>Ley 1119/97 de Productos para la Salud, Art. 25 inc. 10</strong>,
+    que prohibe la publicidad de medicamentos de venta bajo receta salvo los avisos
+    de existencia en plaza, esos productos se muestran <strong>sin precio, sin
+    porcentaje de descuento, sin promocion bancaria y fuera de todo ranking</strong>:
+    solo su nombre, su presentacion, en que farmacias figuran y el enlace a la ficha
+    de la farmacia.
+  </p>
+
+  <h2>2. Precios</h2>
+  <p>
+    Los precios son <strong>referenciales</strong>. Se capturan de forma automatica
+    de los sitios web publicos de cada farmacia, y cada resultado muestra la fecha y
+    hora de esa captura.
+  </p>
+  <ul>
+    <li>Pueden diferir del precio real de gondola o de caja.</li>
+    <li>La <strong>fuente de verdad es siempre la farmacia</strong>, no este sitio.</li>
+    <li>No se garantiza disponibilidad ni stock del producto.</li>
+    <li>
+      Una farmacia puede modificar sus precios en cualquier momento, incluso entre
+      dos capturas nuestras.
+    </li>
+  </ul>
+
+  <h2>3. Promociones bancarias</h2>
+  <p>
+    Lo que se publica sobre promociones, descuentos y reintegros bancarios es un
+    <strong>resumen informativo</strong>. <strong>Prevalecen siempre las bases y
+    condiciones del banco emisor</strong>, enlazadas junto a cada promocion.
+  </p>
+  <p>
+    Estan sujetas a topes de reintegro, nivel de cliente, tarjetas especificas, dias
+    de la semana y fechas de vigencia. El precio final que calcula el sitio aplica el
+    tope del reintegro y no solo el porcentaje, conforme al deber de informacion
+    veraz de la <strong>Ley 1334/98 de Defensa del Consumidor</strong>.
+  </p>
+  <p>
+    Farmaweb.py <strong>no tiene vinculo comercial con ningun banco</strong> ni
+    percibe comision alguna por mencionar sus promociones.
+  </p>
+
+  <h2>4. Marcas de terceros</h2>
+  <p>
+    Los nombres, logotipos y marcas de farmacias, bancos y fabricantes pertenecen a
+    sus respectivos titulares. Se utilizan de forma <strong>nominativa y
+    descriptiva</strong>, con el unico fin de identificar el origen de la
+    informacion. Su uso no implica vinculo, patrocinio, aval ni asociacion.
+  </p>
+
+  <h2>5. Limitacion de responsabilidad</h2>
+  <p>
+    El servicio se ofrece <strong>"tal como esta"</strong>, sin garantias de
+    exactitud, exhaustividad ni disponibilidad continua. Farmaweb.py no responde por
+    decisiones de compra tomadas en base a la informacion publicada, ni por errores
+    de captura, desactualizacion, interrupciones del servicio o el contenido de los
+    sitios de terceros a los que enlaza.
+  </p>
+
+  <h2>6. Propiedad intelectual</h2>
+  <p>
+    El codigo, el diseno y la organizacion de la informacion de este sitio pertenecen
+    a su titular. Los datos de producto, imagenes y descripciones pertenecen a las
+    farmacias y fabricantes de origen.
+  </p>
+
+  <h2>7. Ley aplicable y jurisdiccion</h2>
+  <p>
+    Este aviso se rige por las leyes de la Republica del Paraguay. Cualquier
+    controversia se somete a los tribunales ordinarios de la ciudad de Asuncion, con
+    renuncia a cualquier otro fuero.
+  </p>
+
+  <h2>8. Correcciones y bajas</h2>
+  <p>
+    Si sos una farmacia o un banco y queres corregir un dato o pedir la baja de tu
+    informacion, ver <a href="/para-farmacias-y-bancos">Farmacias y bancos</a>.
+  </p>
+</Legal>

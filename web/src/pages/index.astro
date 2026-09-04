@@ -1,0 +1,25 @@
+---
+import Base from "../layouts/Base.astro";
+import Buscador from "../components/Buscador.tsx";
+---
+
+<Base>
+  <section class="bg-white border-b border-neutral-200">
+    <div class="max-w-6xl mx-auto px-4 py-10 sm:py-14">
+      <h1 class="text-2xl sm:text-4xl font-bold tracking-tight max-w-2xl">
+        Compara precios de farmacias del Paraguay
+      </h1>
+      <p class="mt-3 text-neutral-600 max-w-2xl">
+        Buscamos en las principales farmacias con tienda online y te mostramos el
+        precio real, con el descuento de la farmacia y el reintegro de tu banco
+        aplicado encima.
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- client:load y no client:visible: el buscador es lo unico que hay arriba
+         de todo, esperar a que entre en viewport no ahorra nada. -->
+    <Buscador client:load />
+  </div>
+</Base>

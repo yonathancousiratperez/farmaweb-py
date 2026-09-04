@@ -1,0 +1,112 @@
+---
+import "../styles/global.css";
+import { CONTACTO, DATOS_DE_PRUEBA, SITIO } from "../config/contacto";
+import BannerCookies from "../components/BannerCookies.tsx";
+
+interface Props {
+  titulo?: string;
+  descripcion?: string;
+}
+const { titulo, descripcion = SITIO.descripcion } = Astro.props;
+const tituloCompleto = titulo ? `${titulo} — ${SITIO.nombre}` : SITIO.nombre;
+
+const legales = [
+  ["Terminos y condiciones", "/terminos"],
+  ["Privacidad", "/privacidad"],
+  ["Cookies", "/cookies"],
+  ["Aviso legal", "/aviso-legal"],
+  ["Quienes somos", "/quienes-somos"],
+  ["Contacto", "/contacto"],
+  ["Farmacias y bancos", "/para-farmacias-y-bancos"],
+];
+---
+
+<!doctype html>
+<html lang="es-PY">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{tituloCompleto}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="min-h-screen flex flex-col font-sans">
+    {
+      /* Mientras los datos de contacto sean ficticios, el aviso va arriba de
+         todo y no se puede pasar por alto: sin el, alguien podria confiar en un
+         canal de soporte que no existe. */
+      DATOS_DE_PRUEBA && (
+        <div class="bg-amber-100 text-amber-900 text-center text-sm px-4 py-2 border-b border-amber-200">
+          <strong>Sitio en pruebas</strong> — los datos de contacto no son reales.
+        </div>
+      )
+    }
+
+    <header class="bg-white border-b border-neutral-200 sticky top-0 z-20">
+      <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+        <a href="/" class="flex items-center gap-2 shrink-0">
+          <span
+            class="w-8 h-8 rounded-lg bg-marca-600 text-white grid place-items-center font-bold"
+            >F</span
+          >
+          <span class="font-semibold text-lg tracking-tight">Farmaweb<span class="text-marca-600">.py</span></span>
+        </a>
+        {/* Se scrollea en vez de esconderse detras de un menu hamburguesa: son
+            tres enlaces, y ocultarlos en movil dejaba "Descuentos bancarios"
+            inalcanzable justo en el dispositivo con el que se va a usar mas. */}
+        <nav
+          class="flex items-center gap-4 sm:gap-6 text-sm text-neutral-600 overflow-x-auto"
+        >
+          <a href="/" class="hover:text-marca-700 whitespace-nowrap">Buscador</a>
+          <a href="/descuentos-bancarios" class="hover:text-marca-700 whitespace-nowrap"
+            >Descuentos</a
+          >
+          <a href="/quienes-somos" class="hover:text-marca-700 whitespace-nowrap">Como funciona</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-1"><slot /></main>
+
+    {/* Consentimiento previo (Ley 7593/2025 Art. 6): va en el layout base para
+        que aparezca en todas las paginas, incluidas las legales. */}
+    <BannerCookies client:load />
+
+
+    <footer class="bg-marca-900 text-marca-100 mt-16">
+      <div class="max-w-6xl mx-auto px-4 py-10 grid gap-8 sm:grid-cols-3 text-sm">
+        <div>
+          <p class="font-semibold text-white mb-2">Farmaweb.py</p>
+          <p class="text-marca-100/80 leading-relaxed">
+            Comparador de precios de farmacias del Paraguay. No vendemos ni
+            dispensamos medicamentos: la compra se hace siempre en la farmacia.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold text-white mb-2">Legales</p>
+          <ul class="space-y-1">
+            {legales.map(([texto, href]) => (
+              <li><a href={href} class="hover:text-white hover:underline">{texto}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-white mb-2">Contacto</p>
+          <ul class="space-y-1 text-marca-100/80">
+            <li>{CONTACTO.email}</li>
+            <li>{CONTACTO.telefono}</li>
+            <li>{CONTACTO.direccion}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 text-xs text-marca-100/60">
+        <p class="max-w-6xl mx-auto px-4 py-4">
+          Los precios son referenciales y se capturan automaticamente de los sitios
+          publicos de cada farmacia. Puede haber diferencias con el precio de caja:
+          la fuente de verdad es siempre la farmacia. Las promociones bancarias se
+          rigen por las bases y condiciones del banco emisor.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

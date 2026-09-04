@@ -1,0 +1,50 @@
+---
+import Legal from "../layouts/Legal.astro";
+import { CONTACTO, DATOS_DE_PRUEBA } from "../config/contacto";
+---
+
+<Legal
+  titulo="Contacto"
+  resumen="Escribinos por correo. No hay formulario a proposito: el sitio es estatico y no queremos recolectar datos que no necesitamos."
+>
+  {
+    DATOS_DE_PRUEBA && (
+      <div class="not-prose bg-amber-50 border border-amber-300 text-amber-900 rounded-xl p-4 my-6">
+        <p class="font-semibold">Estos datos de contacto no son reales</p>
+        <p class="text-sm mt-1">
+          El sitio esta en pruebas. El correo y los telefonos de abajo son valores de
+          relleno deliberadamente no asignables: nadie los recibe. Se reemplazan por
+          los verdaderos antes de publicar.
+        </p>
+      </div>
+    )
+  }
+
+  <h2>Por correo</h2>
+  <p>
+    <strong>{CONTACTO.email}</strong> — consultas generales, correcciones de datos,
+    ejercicio de derechos sobre tus datos personales y pedidos de baja.
+  </p>
+  <p>Respondemos los pedidos sobre datos personales en un plazo maximo de 30 dias.</p>
+
+  <h2>Otros medios</h2>
+  <ul>
+    <li>Telefono: {CONTACTO.telefono}</li>
+    <li>WhatsApp: {CONTACTO.whatsapp}</li>
+    <li>Direccion: {CONTACTO.direccion}</li>
+  </ul>
+
+  <h2>Por que no hay formulario</h2>
+  <p>
+    Farmaweb.py es un sitio estatico: no tiene servidor propio donde recibir un
+    formulario. Podriamos usar un servicio de terceros, pero eso significaria mandarle
+    tus datos a una empresa mas sin una razon real. Un correo directo hace lo mismo y
+    deja el control en tus manos.
+  </p>
+
+  <h2>Si sos una farmacia o un banco</h2>
+  <p>
+    Hay una pagina especifica con el procedimiento de correccion y de baja:
+    <a href="/para-farmacias-y-bancos">Para farmacias y bancos</a>.
+  </p>
+</Legal>

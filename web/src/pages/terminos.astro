@@ -1,0 +1,78 @@
+---
+import Legal from "../layouts/Legal.astro";
+import { CONTACTO } from "../config/contacto";
+---
+
+<Legal
+  titulo="Terminos y condiciones de uso"
+  resumen="Farmaweb.py es gratuito, no requiere cuenta y no vende nada. Compara precios publicos y te manda a comprar a la farmacia."
+>
+  <h2>1. Objeto</h2>
+  <p>
+    Estos terminos regulan el uso de Farmaweb.py, un servicio gratuito que reune y
+    compara precios publicados por farmacias del Paraguay con tienda online, y los
+    cruza con promociones bancarias vigentes. Usar el sitio implica aceptarlos.
+  </p>
+
+  <h2>2. Que es y que no es este servicio</h2>
+  <ul>
+    <li>Es un <strong>buscador y comparador de informacion publica</strong>.</li>
+    <li>
+      <strong>No es una farmacia</strong>, no vende ni dispensa productos, no procesa
+      pagos y no interviene en la relacion entre vos y la farmacia.
+    </li>
+    <li>
+      <strong>No da consejo medico ni farmaceutico.</strong> Ver
+      <a href="/aviso-legal">Aviso legal</a>.
+    </li>
+  </ul>
+
+  <h2>3. Uso permitido</h2>
+  <p>Podes usar el sitio libremente para consultar y comparar precios. No podes:</p>
+  <ul>
+    <li>Extraer el contenido de forma masiva y automatizada para republicarlo.</li>
+    <li>Interferir con el funcionamiento del servicio o intentar vulnerar su seguridad.</li>
+    <li>Presentar la informacion como propia o como si fuera oficial de una farmacia.</li>
+  </ul>
+
+  <h2>4. Sin cuenta y sin costo</h2>
+  <p>
+    El servicio es gratuito y no requiere registro. No cobramos comision por las
+    compras que hagas en las farmacias enlazadas.
+  </p>
+
+  <h2>5. Exactitud de la informacion</h2>
+  <p>
+    Los precios y promociones son referenciales y pueden estar desactualizados. La
+    fuente de verdad es siempre la farmacia o el banco. El detalle completo esta en el
+    <a href="/aviso-legal">Aviso legal</a>, que forma parte de estos terminos.
+  </p>
+
+  <h2>6. Enlaces a sitios de terceros</h2>
+  <p>
+    Cada resultado enlaza a la ficha original de la farmacia. No controlamos esos
+    sitios ni respondemos por su contenido, sus terminos ni sus practicas de privacidad.
+  </p>
+
+  <h2>7. Disponibilidad y cambios</h2>
+  <p>
+    El servicio se presta "tal como esta". Podemos modificarlo, suspenderlo o darlo de
+    baja en cualquier momento, y actualizar estos terminos publicando una nueva version
+    con su fecha.
+  </p>
+
+  <h2>8. Limitacion de responsabilidad</h2>
+  <p>
+    No respondemos por decisiones de compra basadas en la informacion del sitio, ni por
+    danos derivados de errores de captura, desactualizacion o indisponibilidad. Ver
+    <a href="/aviso-legal">Aviso legal</a>, punto 5.
+  </p>
+
+  <h2>9. Ley aplicable</h2>
+  <p>
+    Leyes de la Republica del Paraguay. Jurisdiccion: tribunales ordinarios de Asuncion.
+  </p>
+
+  <h2>10. Contacto</h2>
+  <p>Consultas sobre estos terminos: <strong>{CONTACTO.email}</strong>.</p>
+</Legal>
