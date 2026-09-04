@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { buscarProductos, listarFarmacias, type Farmacia, type Producto } from "../lib/datos";
+import {
+  buscarProductos,
+  ERROR_CATALOGO,
+  listarFarmacias,
+  type Farmacia,
+  type Producto,
+} from "../lib/datos";
 import { TarjetaProducto } from "./TarjetaProducto";
 
 const POR_PAGINA = 24;
@@ -55,7 +61,7 @@ export default function Buscador() {
       })
       .catch((e) => {
         if (id !== pedidoActual.current) return;
-        setError(e instanceof Error ? e.message : "No se pudo cargar el catalogo");
+        setError(e instanceof Error ? e.message : ERROR_CATALOGO);
       })
       .finally(() => {
         if (id === pedidoActual.current) setCargando(false);

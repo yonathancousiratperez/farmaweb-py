@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { diasEnTexto, fechaLarga, guaranies, promosVigentes, type Promo } from "../lib/datos";
+import {
+  diasEnTexto,
+  ERROR_CATALOGO,
+  fechaLarga,
+  guaranies,
+  promosVigentes,
+  type Promo,
+} from "../lib/datos";
 
 /**
  * Listado de promociones bancarias vigentes.
@@ -16,7 +23,7 @@ export default function PromosBancarias() {
   useEffect(() => {
     promosVigentes()
       .then(setPromos)
-      .catch((e) => setError(e instanceof Error ? e.message : "Error al cargar"));
+      .catch((e) => setError(e instanceof Error ? e.message : ERROR_CATALOGO));
   }, []);
 
   if (error) {

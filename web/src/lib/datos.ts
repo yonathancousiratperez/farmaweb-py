@@ -11,6 +11,21 @@
 const URL_BASE = import.meta.env.PUBLIC_SUPABASE_URL;
 const CLAVE = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
+/** Mensaje unico para el usuario final: no ve codigos HTTP ni nombres de tabla. */
+export const ERROR_CATALOGO =
+  "No pudimos conectarnos al catalogo. Volve a intentar en un momento.";
+
+/** Si falta la configuracion, el fetch iria a una ruta relativa del propio sitio
+ *  y fallaria con un 405 incomprensible. Mejor detectarlo antes y decirlo claro
+ *  en la consola, para quien despliega, sin ensuciar la pantalla del usuario. */
+function configurado(): boolean {
+  if (URL_BASE && CLAVE) return true;
+  console.error(
+    "Faltan PUBLIC_SUPABASE_URL y/o PUBLIC_SUPABASE_ANON_KEY en el build.",
+  );
+  return false;
+}
+
 export type Producto = {
   id: number;
   farmacia_nombre: string;
@@ -49,6 +64,7 @@ export type OpcionesBusqueda = {
 };
 
 export async function buscarProductos(o: OpcionesBusqueda = {}): Promise<Producto[]> {
+  if (!configurado()) throw new Error(ERROR_CATALOGO);
   const r = await fetch(`${URL_BASE}/rest/v1/rpc/buscar_productos`, {
     method: "POST",
     headers: cabeceras(),
@@ -60,11 +76,12 @@ export async function buscarProductos(o: OpcionesBusqueda = {}): Promise<Product
       p_solo_ofertas: o.soloOfertas ?? false,
     }),
   });
-  if (!r.ok) throw new Error(`Busqueda fallida (${r.status})`);
+  if (!r.ok) throw new Error(ERROR_CATALOGO);
   return r.json();
 }
 
 export async function listarFarmacias(): Promise<Farmacia[]> {
+  if (!configurado()) return [];
   const r = await fetch(
     `${URL_BASE}/rest/v1/v_farmacias_publicas?select=id,nombre,slug,url_base&order=nombre`,
     { headers: cabeceras() },
@@ -115,11 +132,12 @@ export type Promo = {
  * Postgres en cada consulta (`v_promos_vigentes`), no el build.
  */
 export async function promosVigentes(): Promise<Promo[]> {
+  if (!configurado()) throw new Error(ERROR_CATALOGO);
   const r = await fetch(
     `${URL_BASE}/rest/v1/v_promos_publicas?select=*&order=porcentaje.desc`,
     { headers: cabeceras() },
   );
-  if (!r.ok) throw new Error(`No se pudieron cargar las promociones (${r.status})`);
+  if (!r.ok) throw new Error(ERROR_CATALOGO);
   return r.json();
 }
 
