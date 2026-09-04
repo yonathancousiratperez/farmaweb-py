@@ -23,9 +23,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: "22"
           cache: npm
@@ -33,6 +33,10 @@ jobs:
 
       - id: pages
         uses: actions/configure-pages@v5
+        with:
+          # Habilita Pages en el repo si todavia no lo esta, en vez de fallar
+          # con "Get Pages site failed". Evita un paso manual en Settings.
+          enablement: true
 
       - run: npm ci
         working-directory: web
