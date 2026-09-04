@@ -39,7 +39,7 @@ GitHub Actions (cron)         Supabase (free)          GitHub Pages
 
 | Ruta | Que hay |
 |---|---|
-| `scraper/` | `base.py` (cliente HTTP con rate-limit), `db.py` (escritura), un modulo por farmacia |
+| `scraper/` | `base.py` (cliente HTTP con rate-limit), `db.py` (escritura), un modulo por farmacia. Las cinco son HTTP: ninguna necesita navegador |
 | `db/migrations/` | Esquema, vistas, RPC de busqueda y seeds |
 | `web/` | Sitio Astro + Tailwind + islas React |
 | `.github/workflows/` | Scrape diario y deploy a Pages |

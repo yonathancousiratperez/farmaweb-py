@@ -17,13 +17,15 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 300
     strategy:
       # fail-fast off: que Farmatotal falle no es razon para perder Farmaoliva.
       fail-fast: false
-      max-parallel: 3
+      max-parallel: 5
       matrix:
-        farmacia: [farmacenter, farmatotal, farmaoliva]
+        # Las cinco son HTTP: ninguna necesito Playwright al final. Catedral y
+        # Punto Farma parecian client-side, pero sus fichas son server-rendered.
+        farmacia: [farmacenter, farmatotal, farmaoliva, catedral, puntofarma]
 
     steps:
       - uses: actions/checkout@v5
