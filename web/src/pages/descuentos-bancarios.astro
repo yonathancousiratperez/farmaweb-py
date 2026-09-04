@@ -1,4 +1,5 @@
 ---
+import { ruta } from "../lib/rutas";
 import Base from "../layouts/Base.astro";
 import PromosBancarias from "../components/PromosBancarias.tsx";
 ---
@@ -25,7 +26,7 @@ import PromosBancarias from "../components/PromosBancarias.tsx";
       enlazadas en cada promocion. Estan sujetas a topes, nivel de cliente, tarjetas
       especificas y dias. Farmaweb.py no tiene vinculo comercial con ningun banco ni
       percibe comision por mencionarlas. Ver
-      <a href="/aviso-legal" class="text-marca-700 underline underline-offset-2"
+      <a href={ruta("/aviso-legal")} class="text-marca-700 underline underline-offset-2"
         >Aviso legal</a
       >.
     </p>

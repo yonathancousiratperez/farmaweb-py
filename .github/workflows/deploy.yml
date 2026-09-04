@@ -31,6 +31,9 @@ jobs:
           cache: npm
           cache-dependency-path: web/package-lock.json
 
+      - id: pages
+        uses: actions/configure-pages@v5
+
       - run: npm ci
         working-directory: web
 
@@ -41,9 +44,13 @@ jobs:
           # igual vive en Secrets para no tenerla escrita en el repo.
           PUBLIC_SUPABASE_URL: ${{ secrets.PUBLIC_SUPABASE_URL }}
           PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.PUBLIC_SUPABASE_ANON_KEY }}
+          # Pages sirve un repo de proyecto bajo /nombre-del-repo/. Sin el base
+          # correcto, todos los enlaces internos dan 404. `base_url` sale del
+          # propio deploy, asi que no hay que hardcodear el usuario.
+          PUBLIC_SITE_URL: ${{ steps.pages.outputs.origin }}
+          PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
         run: npm run build
 
-      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: web/dist

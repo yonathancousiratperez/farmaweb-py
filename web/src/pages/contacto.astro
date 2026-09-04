@@ -1,4 +1,5 @@
 ---
+import { ruta } from "../lib/rutas";
 import Legal from "../layouts/Legal.astro";
 import { CONTACTO, DATOS_DE_PRUEBA } from "../config/contacto";
 ---
@@ -45,6 +46,6 @@ import { CONTACTO, DATOS_DE_PRUEBA } from "../config/contacto";
   <h2>Si sos una farmacia o un banco</h2>
   <p>
     Hay una pagina especifica con el procedimiento de correccion y de baja:
-    <a href="/para-farmacias-y-bancos">Para farmacias y bancos</a>.
+    <a href={ruta("/para-farmacias-y-bancos")}>Para farmacias y bancos</a>.
   </p>
 </Legal>

@@ -1,4 +1,5 @@
 ---
+import { ruta } from "../lib/rutas";
 import Legal from "../layouts/Legal.astro";
 import { CONTACTO } from "../config/contacto";
 ---
@@ -23,7 +24,7 @@ import { CONTACTO } from "../config/contacto";
     </li>
     <li>
       <strong>No da consejo medico ni farmaceutico.</strong> Ver
-      <a href="/aviso-legal">Aviso legal</a>.
+      <a href={ruta("/aviso-legal")}>Aviso legal</a>.
     </li>
   </ul>
 
@@ -45,7 +46,7 @@ import { CONTACTO } from "../config/contacto";
   <p>
     Los precios y promociones son referenciales y pueden estar desactualizados. La
     fuente de verdad es siempre la farmacia o el banco. El detalle completo esta en el
-    <a href="/aviso-legal">Aviso legal</a>, que forma parte de estos terminos.
+    <a href={ruta("/aviso-legal")}>Aviso legal</a>, que forma parte de estos terminos.
   </p>
 
   <h2>6. Enlaces a sitios de terceros</h2>
@@ -65,7 +66,7 @@ import { CONTACTO } from "../config/contacto";
   <p>
     No respondemos por decisiones de compra basadas en la informacion del sitio, ni por
     danos derivados de errores de captura, desactualizacion o indisponibilidad. Ver
-    <a href="/aviso-legal">Aviso legal</a>, punto 5.
+    <a href={ruta("/aviso-legal")}>Aviso legal</a>, punto 5.
   </p>
 
   <h2>9. Ley aplicable</h2>

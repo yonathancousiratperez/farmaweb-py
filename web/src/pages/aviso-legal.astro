@@ -1,4 +1,5 @@
 ---
+import { ruta } from "../lib/rutas";
 import Legal from "../layouts/Legal.astro";
 import { SITIO } from "../config/contacto";
 ---
@@ -97,6 +98,6 @@ import { SITIO } from "../config/contacto";
   <h2>8. Correcciones y bajas</h2>
   <p>
     Si sos una farmacia o un banco y queres corregir un dato o pedir la baja de tu
-    informacion, ver <a href="/para-farmacias-y-bancos">Farmacias y bancos</a>.
+    informacion, ver <a href={ruta("/para-farmacias-y-bancos")}>Farmacias y bancos</a>.
   </p>
 </Legal>

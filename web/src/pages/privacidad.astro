@@ -1,4 +1,5 @@
 ---
+import { ruta } from "../lib/rutas";
 import Legal from "../layouts/Legal.astro";
 import { CONTACTO } from "../config/contacto";
 ---
@@ -65,7 +66,7 @@ import { CONTACTO } from "../config/contacto";
       <strong>Consentimiento previo, libre, informado e inequivoco</strong> (Art. 6):
       cookies y tecnologias similares que no sean estrictamente necesarias. Podes
       revocarlo en cualquier momento y con la misma facilidad con que lo diste, desde
-      <a href="/cookies">Politica de cookies</a>.
+      <a href={ruta("/cookies")}>Politica de cookies</a>.
     </li>
     <li>
       <strong>Ejecucion de tu solicitud</strong>: responder los mensajes que nos envies.

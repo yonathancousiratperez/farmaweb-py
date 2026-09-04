@@ -1,4 +1,5 @@
 ---
+import { ruta } from "../lib/rutas";
 import "../styles/global.css";
 import { CONTACTO, DATOS_DE_PRUEBA, SITIO } from "../config/contacto";
 import BannerCookies from "../components/BannerCookies.tsx";
@@ -28,7 +29,7 @@ const legales = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{tituloCompleto}</title>
     <meta name="description" content={descripcion} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={ruta("/favicon.svg")} type="image/svg+xml" />
   </head>
   <body class="min-h-screen flex flex-col font-sans">
     {
@@ -44,7 +45,7 @@ const legales = [
 
     <header class="bg-white border-b border-neutral-200 sticky top-0 z-20">
       <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
-        <a href="/" class="flex items-center gap-2 shrink-0">
+        <a href={ruta("/")} class="flex items-center gap-2 shrink-0">
           <span
             class="w-8 h-8 rounded-lg bg-marca-600 text-white grid place-items-center font-bold"
             >F</span
@@ -57,11 +58,11 @@ const legales = [
         <nav
           class="flex items-center gap-4 sm:gap-6 text-sm text-neutral-600 overflow-x-auto"
         >
-          <a href="/" class="hover:text-marca-700 whitespace-nowrap">Buscador</a>
-          <a href="/descuentos-bancarios" class="hover:text-marca-700 whitespace-nowrap"
+          <a href={ruta("/")} class="hover:text-marca-700 whitespace-nowrap">Buscador</a>
+          <a href={ruta("/descuentos-bancarios")} class="hover:text-marca-700 whitespace-nowrap"
             >Descuentos</a
           >
-          <a href="/quienes-somos" class="hover:text-marca-700 whitespace-nowrap">Como funciona</a>
+          <a href={ruta("/quienes-somos")} class="hover:text-marca-700 whitespace-nowrap">Como funciona</a>
         </nav>
       </div>
     </header>
@@ -86,7 +87,7 @@ const legales = [
           <p class="font-semibold text-white mb-2">Legales</p>
           <ul class="space-y-1">
             {legales.map(([texto, href]) => (
-              <li><a href={href} class="hover:text-white hover:underline">{texto}</a></li>
+              <li><a href={ruta(href)} class="hover:text-white hover:underline">{texto}</a></li>
             ))}
           </ul>
         </div>

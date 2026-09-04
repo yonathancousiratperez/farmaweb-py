@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ruta } from "../lib/rutas";
 
 const CLAVE = "farmaweb:consentimiento";
 
@@ -60,7 +61,7 @@ export default function BannerCookies() {
           Usamos cookies propias necesarias para que el sitio funcione. Para medir el
           uso de forma agregada necesitamos tu permiso. Podes cambiar de idea cuando
           quieras desde{" "}
-          <a href="/cookies" className="text-marca-700 underline underline-offset-2">
+          <a href={ruta("/cookies")} className="text-marca-700 underline underline-offset-2">
             Politica de cookies
           </a>
           .
