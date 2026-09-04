@@ -11,6 +11,7 @@ entorno del mismo nombre, para que en GitHub Actions venga de un Secret.
 
 from __future__ import annotations
 
+import json
 import os
 import pathlib
 import re
@@ -89,7 +90,8 @@ create temp table stg_productos (
   categoria_ruta  text,
   precio_lista    numeric(12,2),
   precio_oferta   numeric(12,2),
-  descuento_pct   numeric(5,2)
+  descuento_pct   numeric(5,2),
+  campos_extra    jsonb
 ) on commit drop;
 """
 
@@ -110,9 +112,10 @@ on conflict (slug) do nothing;
 SQL_UPSERT_PRODUCTOS = """
 insert into productos (farmacia_id, sku_farmacia, ean, nombre, marca, presentacion,
                        categoria_id, url_producto, imagen_url, condicion_venta,
-                       activo, visto_ultima_vez)
+                       campos_extra, activo, visto_ultima_vez)
 select %(fid)s, s.sku_farmacia, s.ean, s.nombre, s.marca, s.presentacion,
-       c.id, s.url_producto, s.imagen_url, s.condicion_venta, true, now()
+       c.id, s.url_producto, s.imagen_url, s.condicion_venta,
+       coalesce(s.campos_extra, '{}'::jsonb), true, now()
 from   stg_productos s
 left   join categorias c on c.slug = %(pref)s || '-' || regexp_replace(
          lower(translate(s.categoria_ruta, 'áéíóúüñÁÉÍÓÚÜÑ', 'aeiouunAEIOUUN')),
@@ -122,6 +125,9 @@ on conflict (farmacia_id, sku_farmacia) do update set
   presentacion = excluded.presentacion, categoria_id = excluded.categoria_id,
   url_producto = excluded.url_producto, imagen_url = excluded.imagen_url,
   condicion_venta = excluded.condicion_venta,
+  -- Se fusiona en vez de reemplazar: cada scrape puede traer un subconjunto de
+  -- claves, y perder las que no vinieron esta vez seria un retroceso silencioso.
+  campos_extra = productos.campos_extra || excluded.campos_extra,
   activo = true, visto_ultima_vez = now();
 """
 
@@ -168,13 +174,14 @@ def guardar(conn: psycopg.Connection, farmacia_slug: str,
         with cur.copy(
             "copy stg_productos (sku_farmacia, ean, nombre, marca, presentacion,"
             " url_producto, imagen_url, condicion_venta, categoria_ruta,"
-            " precio_lista, precio_oferta, descuento_pct) from stdin"
+            " precio_lista, precio_oferta, descuento_pct, campos_extra) from stdin"
         ) as copy:
             for p in productos:
                 copy.write_row((p.sku_farmacia, p.ean, p.nombre, p.marca,
                                 p.presentacion, p.url_producto, p.imagen_url,
                                 p.condicion_venta, p.categoria_ruta,
-                                p.precio_lista, p.precio_oferta, p.descuento_pct))
+                                p.precio_lista, p.precio_oferta, p.descuento_pct,
+                                json.dumps(p.campos_extra, ensure_ascii=False)))
         cur.execute(SQL_CATEGORIAS, (farmacia_slug,))
         cur.execute(SQL_UPSERT_PRODUCTOS, {"fid": fid, "pref": farmacia_slug})
         productos_tocados = cur.rowcount
