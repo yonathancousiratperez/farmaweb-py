@@ -124,7 +124,10 @@ on conflict (farmacia_id, sku_farmacia) do update set
   ean = excluded.ean, nombre = excluded.nombre, marca = excluded.marca,
   presentacion = excluded.presentacion, categoria_id = excluded.categoria_id,
   url_producto = excluded.url_producto, imagen_url = excluded.imagen_url,
-  condicion_venta = excluded.condicion_venta,
+  -- DINAVISA manda sobre lo que adivina el scraper. Sin este coalesce, la
+  -- corrida nocturna revertiria cada noche la clasificacion de T5 y los
+  -- productos de venta libre volverian a ocultarse (el scraper falla cerrado).
+  condicion_venta = coalesce(productos.condicion_venta_dinavisa, excluded.condicion_venta),
   -- Se fusiona en vez de reemplazar: cada scrape puede traer un subconjunto de
   -- claves, y perder las que no vinieron esta vez seria un retroceso silencioso.
   campos_extra = productos.campos_extra || excluded.campos_extra,

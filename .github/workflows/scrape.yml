@@ -43,6 +43,34 @@ jobs:
           FARMAWEB_SUPABASE_DB_PASSWORD: ${{ secrets.FARMAWEB_SUPABASE_DB_PASSWORD }}
         run: python -m scraper.${{ matrix.farmacia }}
 
+  clasificar:
+    # Va DESPUES del scrape y no antes: el upsert reescribe condicion_venta con
+    # lo que adivina cada scraper (que falla cerrado), asi que clasificar primero
+    # no serviria de nada. Corre aunque alguna farmacia haya fallado: reclasifica
+    # el catalogo entero, no solo lo que se scrapeo hoy.
+    needs: scrape
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r scraper/requirements.txt
+
+      # El CSV se regenera del PDF en cada corrida en vez de versionarse: si la
+      # extraccion se desalineara, `dinavisa.py` aborta antes de escribir y este
+      # job falla en vez de publicar precios de medicamentos bajo receta.
+      - name: Extraer el listado de DINAVISA
+        run: python -m scraper.dinavisa
+
+      - name: Clasificar condicion de venta
+        env:
+          FARMAWEB_SUPABASE_DB_PASSWORD: ${{ secrets.FARMAWEB_SUPABASE_DB_PASSWORD }}
+        run: python -m scraper.condicion_venta
+
   enriquecer-ean:
     # Farmatotal solo publica el EAN en la ficha. Se completa de a tandas
     # despues del scrape: el codigo de barras no cambia, no tiene sentido pagar

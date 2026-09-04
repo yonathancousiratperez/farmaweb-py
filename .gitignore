@@ -28,3 +28,6 @@ web/node_modules/
 web/dist/
 web/.astro/
 copiar-secreto.py
+
+# Generado por `python -m scraper.dinavisa` a partir del PDF versionado.
+scraper/datos/medicamentos.csv
